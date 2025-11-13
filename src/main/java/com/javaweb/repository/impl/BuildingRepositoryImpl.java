@@ -112,17 +112,7 @@ public class BuildingRepositoryImpl implements BuildingRepository {
 	@Override
 	public List<BuildingEntity> fineAll(BuildingSearchBuilder buildingSearchBuilder) {
 
-		StringBuilder sql = new StringBuilder("SELECT " +
-		// alias theo đúng nhãn bạn đang get trong ResultSet (chú ý backtick `...`)
-				"  b.id                      AS `b.id`, " + "  b.name                    AS `b.name`, "
-				+ "  b.floorarea               AS `b.floorarea`, " + "  b.districtid              AS `b.districtid`, "
-				+ "  b.ward                    AS `b.ward`, " + "  b.street                  AS `b.street`, "
-				+ "  b.numberofbasement        AS `b.numberofbasement`, "
-				+ "  b.direction               AS `b.direction`, " + "  b.level                   AS `b.level`, "
-				+ "  b.rentprice               AS `b.rentprice`, "
-				+ "  b.rentpricedescription    AS `b.rentpricedescription`, "
-				+ "  b.managername             AS `b.managername`, "
-				+ "  b.managerphonenumber      AS `b.managerphonenumber` " + "FROM building b ");
+		StringBuilder sql = new StringBuilder("SELECT b.* FROM building b ");
 		joinTable(buildingSearchBuilder, sql);
 		StringBuilder where = new StringBuilder(" WHERE 1 = 1 ");
 		queryNormal(buildingSearchBuilder, where);

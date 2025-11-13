@@ -38,8 +38,8 @@ public class BuildingEntity {
 	private Integer level;
 	@Column(name = "rentprice")
 	private Integer rentprice;
-	@Column(name = "rentpricedescriprion")
-	private String rentpricedescriprion;
+	@Column(name = "rentpricedescription")
+	private String rentpricedescription;
 	@Column(name = "managername")
 	private String managername;
 	@Column(name = "managerphonenumber")
@@ -142,12 +142,12 @@ public class BuildingEntity {
 		this.rentprice = rentprice;
 	}
 
-	public String getRentpricedescriprion() {
-		return rentpricedescriprion;
+	public String getRentpricedescription() {
+		return rentpricedescription;
 	}
 
-	public void setRentpricedescriprion(String rentpricedescriprion) {
-		this.rentpricedescriprion = rentpricedescriprion;
+	public void setRentpricedescriprion(String rentpricedescription) {
+		this.rentpricedescription = rentpricedescription;
 	}
 
 	public String getManagername() {
