@@ -17,28 +17,27 @@ import com.javaweb.repository.entity.BuildingEntity;
 import com.javaweb.service.BuildingService;
 
 @Service
-public class BuildingServiceImpl implements BuildingService{
+public class BuildingServiceImpl implements BuildingService {
 	@Autowired
 	private BuildingRepository buildingRepository;
-	
+
 	@Autowired
 	private BuildingSearchBuilderConverter buildingSearchBuilderConverter;
-	
+
 	@Autowired
 	private BuildingDTOConverter buildingDTOConverter;
 
 	@Override
 	public List<BuildingDTO1> fineAll(Map<String, Object> params, List<String> renttypeid) {
-		BuildingSearchBuilder buildingSearchBuilder = buildingSearchBuilderConverter.toBuildingSearchBuilder(params, renttypeid);
+		BuildingSearchBuilder buildingSearchBuilder = buildingSearchBuilderConverter.toBuildingSearchBuilder(params,
+				renttypeid);
 		List<BuildingEntity> buildingEntities = buildingRepository.fineAll(buildingSearchBuilder);
 		List<BuildingDTO1> result = new ArrayList<BuildingDTO1>();
-		for(BuildingEntity item : buildingEntities) {
+		for (BuildingEntity item : buildingEntities) {
 			BuildingDTO1 building = buildingDTOConverter.toBuildingDTO(item);
 			result.add(building);
 		}
 		return result;
 	}
-	
-	
-	
+
 }

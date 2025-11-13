@@ -16,20 +16,14 @@ import com.javaweb.repository.entity.RentAreaEntity;
 
 @Component
 public class BuildingDTOConverter {
+
 	@Autowired
-	private DistrictRepository districtRepository;
-	
-	@Autowired
-	private RentAreaRepository rentAreaRepository;
-	
-	@Autowired 
 	private ModelMapper modelMapper;
-	
+
 	public BuildingDTO1 toBuildingDTO(BuildingEntity item) {
 		BuildingDTO1 building = modelMapper.map(item, BuildingDTO1.class);
-		DistrictEntity districtEntity = districtRepository.findNameById(item.getDistrictid());
-		building.setAddress(item.getStreet()+","+item.getWard()+","+districtEntity.getName());
-		List<RentAreaEntity> rentAreas = rentAreaRepository.getValueByBuildingId(item.getId());
+		building.setAddress(item.getStreet() + "," + item.getWard() + "," + item.getDistrict().getName());
+		List<RentAreaEntity> rentAreas = item.getItems();
 		String rentarealist = rentAreas.stream().map(it -> it.getValue().toString()).collect(Collectors.joining(","));
 		building.setRentarea(rentarealist);
 //		building.setName(item.getName());

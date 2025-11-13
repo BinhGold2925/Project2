@@ -14,28 +14,25 @@ import com.javaweb.repository.entity.RentAreaEntity;
 import com.javaweb.utils.ConnectionJDBCUtil;
 
 @Repository
-public class RentAreaRepositoryImpl implements RentAreaRepository{
-	
+public class RentAreaRepositoryImpl implements RentAreaRepository {
+
 	@Override
 	public List<RentAreaEntity> getValueByBuildingId(Integer id) {
-		String sql = "SELECT * FROM rentarea WHERE rentarea.buildingid = "+id+" ";
+		String sql = "SELECT * FROM rentarea WHERE rentarea.buildingid = " + id + " ";
 		List<RentAreaEntity> result = new ArrayList<>();
-		try(Connection conn = ConnectionJDBCUtil.getConnection()){
+		try (Connection conn = ConnectionJDBCUtil.getConnection()) {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
-			while(rs.next()) {
+			while (rs.next()) {
 				RentAreaEntity rentAreaEntity = new RentAreaEntity();
 				rentAreaEntity.setValue(rs.getString("value"));
-				rentAreaEntity.setBuildingid(rs.getInt("buildingid"));
 				rentAreaEntity.setId(rs.getInt("id"));
 				result.add(rentAreaEntity);
 			}
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return result;
 	}
-
-	
 
 }

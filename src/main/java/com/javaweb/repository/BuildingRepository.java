@@ -8,5 +8,5 @@ import com.javaweb.repository.entity.BuildingEntity;
 
 public interface BuildingRepository {
 	List<BuildingEntity> fineAll(BuildingSearchBuilder buildingSearchBuilder);
-	
+
 }

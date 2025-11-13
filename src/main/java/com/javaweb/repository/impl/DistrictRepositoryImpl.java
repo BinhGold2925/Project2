@@ -13,18 +13,18 @@ import com.javaweb.utils.ConnectionJDBCUtil;
 
 @Repository
 public class DistrictRepositoryImpl implements DistrictRepository {
-	
+
 	@Override
 	public DistrictEntity findNameById(Integer id) {
-		String sql = "SELECT district.name FROM district WHERE district.id = "+id+" ";
+		String sql = "SELECT district.name FROM district WHERE district.id = " + id + " ";
 		DistrictEntity districtEntity = new DistrictEntity();
-		try(Connection conn = ConnectionJDBCUtil.getConnection()){
+		try (Connection conn = ConnectionJDBCUtil.getConnection()) {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);
-			while(rs.next()) {
+			while (rs.next()) {
 				districtEntity.setName(rs.getString("name"));
 			}
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return districtEntity;

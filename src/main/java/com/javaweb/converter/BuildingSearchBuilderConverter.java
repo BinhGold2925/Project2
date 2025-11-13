@@ -10,7 +10,7 @@ import com.javaweb.utils.MapUtil;
 
 @Component
 public class BuildingSearchBuilderConverter {
-	public BuildingSearchBuilder toBuildingSearchBuilder(Map<String, Object> params, List<String> renttypeid){
+	public BuildingSearchBuilder toBuildingSearchBuilder(Map<String, Object> params, List<String> renttypeid) {
 		BuildingSearchBuilder buildingSearchBuilder = new BuildingSearchBuilder.Builder()
 				.setName(MapUtil.getObject(params, "name", String.class))
 				.setFloorarea(MapUtil.getObject(params, "floorarea", Integer.class))
@@ -25,10 +25,9 @@ public class BuildingSearchBuilderConverter {
 				.setRentareafrom(MapUtil.getObject(params, "rentareafrom", Integer.class))
 				.setRentareato(MapUtil.getObject(params, "rentareato", Integer.class))
 				.setRentpricefrom(MapUtil.getObject(params, "rentpricefrom", Integer.class))
-				.setRentpriceto(MapUtil.getObject(params, "rentpriceto", Integer.class))
-				.setRenttypeid(renttypeid)
+				.setRentpriceto(MapUtil.getObject(params, "rentpriceto", Integer.class)).setRenttypeid(renttypeid)
 				.setStaffid(MapUtil.getObject(params, "staffid", Integer.class)).build();
-		
+
 		return buildingSearchBuilder;
 	}
 }
