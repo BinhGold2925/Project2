@@ -31,7 +31,7 @@ public class BuildingServiceImpl implements BuildingService {
 	public List<BuildingDTO1> fineAll(Map<String, Object> params, List<String> renttypeid) {
 		BuildingSearchBuilder buildingSearchBuilder = buildingSearchBuilderConverter.toBuildingSearchBuilder(params,
 				renttypeid);
-		List<BuildingEntity> buildingEntities = buildingRepository.fineAll(buildingSearchBuilder);
+		List<BuildingEntity> buildingEntities = buildingRepository.findAll(buildingSearchBuilder);
 		List<BuildingDTO1> result = new ArrayList<BuildingDTO1>();
 		for (BuildingEntity item : buildingEntities) {
 			BuildingDTO1 building = buildingDTOConverter.toBuildingDTO(item);
